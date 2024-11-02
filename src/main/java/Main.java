@@ -6,7 +6,7 @@ public class Main {
     static final double DEAD_ALIVE_RATIO = 0.7;
 
     public static void main(String[] args) throws InterruptedException {
-        char[][] matrix = new char[100][100];
+        char[][] matrix = new char[16][16];
         initRandom(matrix);
         printMatrix(matrix);
         boolean isAllDead = isAllDead(matrix);
