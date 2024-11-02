@@ -28,8 +28,17 @@ Para ejecutar el proyecto, asegúrate de tener **Java** y **Maven** instalados e
 2. Compila el proyecto con Maven
    ```bash
    mvn clean package
-   java -jar target/game-of-life-1.0.jar
    ```
+3. Ejecutar el programa (sin parámetros)
+  ```bash
+  java -jar target/game-of-life-1.0.jar
+  ```
+4. Ejecutar el programa con parámetros de la matriz
+  ```bash
+  java -jar target/game-of-life-1.0.jar <alto> <ancho>
+  ```
+  > Por ejemplo:
+  > `java -jar target/game-of-life-1.0.jar 40 80`
 
 > La ejecución del programa termina si:
 >  - La matriz está vacía

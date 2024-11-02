@@ -3,10 +3,26 @@ import java.util.Arrays;
 public class Main {
     static final char DEAD = '·';
     static final char ALIVE = '✖';
-    static final double DEAD_ALIVE_RATIO = 0.7;
+    static final double DEAD_ALIVE_RATIO = 0.5;
+    static final int DEFAULT_MATRIX_HEIGHT = 30;
+    static final int DEFAULT_MATRIX_WIDTH = 100;
 
     public static void main(String[] args) throws InterruptedException {
-        char[][] matrix = new char[16][16];
+        int height = DEFAULT_MATRIX_HEIGHT;
+        int width = DEFAULT_MATRIX_WIDTH;
+
+        if (args.length >= 2) {
+            try {
+                height = Integer.parseInt(args[0]);
+                width = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                System.out.println("Argumentos inválidos, usando valores por defecto.");
+                height = DEFAULT_MATRIX_HEIGHT;
+                width = DEFAULT_MATRIX_WIDTH;
+            }
+        }
+
+        char[][] matrix = new char[height][width];
         initRandom(matrix);
         printMatrix(matrix);
         boolean isAllDead = isAllDead(matrix);
@@ -23,8 +39,8 @@ public class Main {
             isAllDead = isAllDead(newMatrix);
             isSameMatrix = isSameMatrix(matrix, newMatrix);
             matrix = newMatrix;
+            Thread.sleep(150);
             printMatrix(matrix);
-            Thread.sleep(500);
         }
         System.out.println("SE HA TERMINADO LA VIDA!");
     }
@@ -80,7 +96,6 @@ public class Main {
         System.out.println("-".repeat(matrix[0].length));
     }
 
-
     static int[] checkCells(char[][] matrix, int row, int col) {
         int[] result = new int[]{0, 0}; // [dead, alive]
         char c = matrix[row][col];
@@ -89,7 +104,6 @@ public class Main {
             right = matrix[row][col + 1];
             result[right == ALIVE ? 1 : 0]++;
         }
-
 
         char left;
         if (col - 1 >= 0) {
@@ -135,7 +149,6 @@ public class Main {
 
         return result;
     }
-
 
     static char nextState(int[] result, char cell) {
         int deadCells = result[0];
