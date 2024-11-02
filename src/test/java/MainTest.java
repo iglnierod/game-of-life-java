@@ -3,8 +3,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
-    static final char DEAD = '·';
-    static final char ALIVE = '✖';
+    static final char DEAD = Main.DEAD;
+    static final char ALIVE = Main.ALIVE;
 
     private char[][] matrix;
 
