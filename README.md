@@ -34,6 +34,7 @@ Para ejecutar el proyecto, asegúrate de tener **Java** y **Maven** instalados e
 > La ejecución del programa termina si:
 >  - La matriz está vacía
 >  - Se repite exactamente la matríz
+> 
 > Para terminar la ejecución si ha entrado en bucle usar `Ctrl+C`
 
 
